@@ -1,0 +1,28 @@
+name: MonstersPlus
+main: me.crashcringle.monstersplus.MonstersPlus
+author: CrashCringle
+version: 1.4.1
+depend: [WorldGuard,CoreProtect,LibsDisguises,WorldEdit,Jobs,Factions,Vault]
+description: MonstersPlus
+api-version: 1.16
+commands:
+  jobenchant:
+    description: Utilize available enchantments based on your job.
+  oreradar:
+    description: Use the mining radar.
+  track:
+    description: Track an entity based on your job.
+  faq:
+    description: Display frequently asked questions.
+  customenchant:
+    description: Enchant items with custom enchantments.
+  powerstone:
+    description: Consume powerstones.
+  powerstones:
+    description: Consume powerstones.
+  customspawn:
+    description: Spawn Custom Monsters.
+  disguise:
+    description: Handle player disguises.
+  builder:
+    description: Access the job builder tools.

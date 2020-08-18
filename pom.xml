@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	  <modelVersion>4.0.0</modelVersion>
+	  <groupId>CrashCringle</groupId>
+	  <artifactId>MonstersPlus</artifactId>
+	  <version>1.4.1</version>
+	<!--Repositories -->
+	<repositories>
+			<repository>
+			<id>vault-repo</id>
+			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
+		</repository>
+		<repository>
+			<id>coreprotect</id>
+			<url>http://maven.playpro.com</url>
+		</repository>
+		<repository>
+			<id>ess-repo</id>
+			<url>https://ci.ender.zone/plugin/repository/everything/</url>
+		</repository>
+		<repository>
+			<id>enginehub-maven</id>
+			<url>http://maven.enginehub.org/repo/</url>
+		</repository>
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+		<repository>
+			<id>codemc-snapshots</id>
+			<url>https://repo.codemc.org/repository/maven-snapshots/</url>
+		</repository>
+		<repository>
+			<id>md_5-public</id>
+			<url>http://repo.md-5.net/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+
+	<!--Dependencies -->
+	<dependencies>
+		<!--Spigot -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.16.1-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Vault -->
+		<dependency>
+			<groupId>net.milkbowl.vault</groupId>
+			<artifactId>VaultAPI</artifactId>
+			<version>1.7</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- LibsDisguises -->
+		<dependency>
+			<groupId>LibsDisguises</groupId>
+			<artifactId>LibsDisguises</artifactId>
+			<version>10.0.15</version>
+		</dependency>
+		
+		<!-- WorldEdit -->
+		<dependency>
+			<groupId>com.sk89q.worldedit</groupId>
+			<artifactId>worldedit-bukkit</artifactId>
+			<version>7.1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!--  Factions  -->
+		<dependency>
+			<groupId>com.factions</groupId>
+			<artifactId>factions</artifactId>
+			<version>1.8.9</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/Utils/Factions.jar</systemPath>
+		</dependency>
+		
+		<!--  Jobs  -->
+		<dependency>
+			<groupId>com.jobs</groupId>
+			<artifactId>jobsreborn</artifactId>
+			<version>4.16.9</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/Utils/JobsReborn.jar</systemPath>
+		</dependency>
+		<!-- CoreProtect -->
+		<dependency>
+			<groupId>net.coreprotect</groupId>
+			<artifactId>coreprotect</artifactId>
+			<version>2.15.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- WorldGuard -->
+    <dependency>
+        <groupId>com.sk89q.worldguard</groupId>
+        <artifactId>worldguard-bukkit</artifactId>
+        <version>7.0.4-SNAPSHOT</version>
+        <scope>provided</scope>
+    </dependency>
+    
+		<!--  Massivecore  -->
+		<dependency>
+			<groupId>com.massivecore</groupId>
+			<artifactId>massivecore</artifactId>
+			<version>1.8.9</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/Utils/MassiveCore.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>net.ess3</groupId>
+			<artifactId>EssentialsX</artifactId>
+			<version>2.17.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>clean package install</defaultGoal>
+		<finalName>${project.name}-${project.version}</finalName>
+		<sourceDirectory>${project.basedir}/src/</sourceDirectory>
+		<resources>
+			<resource>
+				<targetPath>.</targetPath>
+				<filtering>true</filtering>
+				<directory>${project.basedir}/src/</directory>
+				<includes>
+					<include>plugin.yml</include>
+					<include>config.yml</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+	                <excludeScope>system</excludeScope>
+                 <excludes>META-INF/*.SF</excludes>
+                <excludes>META-INF/*.DSA</excludes>
+                <excludes>META-INF/*.RSA</excludes>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration />
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
